@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+    <script>
+        function passwordCopied() {
+            alert('Password copied to clipboard!')
+            event.preventDefault();
+        }
+    </script>
+    <div class="container">
+        <div class="wrapper">
+            <div class="title"><span>Password Generator</span></div>
+            <form action="/" method="POST">
+                <div class="row number">
+                    <span>Password Length</span>
+                    <input type="number" value={{ password_length }} min="4" max="40" id="pw-length" name="pw-length">
+                </div>
+                <div class="row checkbox">
+                    <input type="checkbox" id="uppercase" name="uppercase" value="uppercase" autocomplete="off">
+                    <label for="uppercase">Include Uppercase (e.g : ABCD...Z)</label>
+                </div>
+                <div class="row checkbox">
+                    <input type="checkbox" id="lowercase" name="lowercase" value="lowercase" autocomplete="off">
+                    <label for="lowercase">Include Lowercase (e.g : abcd...z)</label>
+                </div>
+                <div class="row checkbox">
+                    <input type="checkbox" id="numbers" name="numbers" value="numbers" autocomplete="off">
+                    <label for="numbers">Include Numbers (e.g : 0123...9)</label>
+                </div>
+                <div class="row checkbox">
+                    <input type="checkbox" id="symbols" name="symbols" value="symbols" autocomplete="off">
+                    <label for="symbols">Include Symbols (e.g : =>?@[\_{|}~)</label>
+                </div>
+                <div class="row checkbox">
+                    <input type="checkbox" id="all" name="all" value="all" autocomplete="off">
+                    <label for="all">Select All (Generate Strong Password)</label>
+                </div>
+                <div class="row pass">
+                    <span id="generated-password">{{ password }}</span>
+                    <button onclick="passwordCopied()">Copy</button>
+                </div>
+                <div class="row button">
+                    <input type="submit" id="submit" value="Generate Password">
+                    
+                </div>    
+            </form>
+
+        </div>
+    </div>
+        
+</body>
+
+</html>
